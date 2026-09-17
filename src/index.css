@@ -579,47 +579,32 @@ main {
   }
 }
 
-/* ---------- Hero poster background ---------- */
-.hero-collage {
+/* ---------- Hero featured backdrop ---------- */
+.hero-backdrop {
   position: absolute;
-  inset: -8%;
+  inset: 0;
   z-index: 0;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 4px;
-  filter: blur(3px) saturate(0.85);
-  transform: scale(1.06);
-  opacity: 0.32;
-  pointer-events: none;
-}
-
-.hero-collage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
+  pointer-events: none;
 }
 
-@media (max-width: 900px) {
-  .hero-collage {
-    grid-template-columns: repeat(3, 1fr);
-    opacity: 0.22;
-  }
-}
-
-/* Dark wash so the headline stays readable over the posters */
+/* Dark wash so the headline stays readable over the backdrop */
 .hero-veil {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(100deg, var(--ink) 18%, rgba(21, 20, 26, 0.86) 48%, rgba(21, 20, 26, 0.6) 100%),
-    linear-gradient(to bottom, rgba(21, 20, 26, 0.9) 0%, rgba(21, 20, 26, 0.25) 35%, rgba(21, 20, 26, 0.95) 100%);
+    linear-gradient(100deg, var(--ink) 32%, rgba(21, 20, 26, 0.78) 58%, rgba(21, 20, 26, 0.35) 100%),
+    linear-gradient(to bottom, rgba(21, 20, 26, 0.55) 0%, rgba(21, 20, 26, 0.1) 30%, rgba(21, 20, 26, 0.8) 100%);
 }
 
 @media (max-width: 900px) {
   .hero-veil {
-    background: linear-gradient(to bottom, rgba(21, 20, 26, 0.88) 0%, rgba(21, 20, 26, 0.8) 60%, var(--ink) 100%);
+    background: linear-gradient(to bottom, rgba(21, 20, 26, 0.55) 0%, rgba(21, 20, 26, 0.75) 55%, var(--ink) 100%);
   }
 }
 
@@ -676,4 +661,21 @@ main {
   .hero-strip__col {
     animation: none;
   }
+}
+
+/* ---------- Navbar link underline ---------- */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -2px;
+  height: 2px;
+  background: var(--gold);
+  transition: right 0.2s ease;
+}
+
+.nav-link:hover::after,
+.nav-link--active::after {
+  right: 0;
 }

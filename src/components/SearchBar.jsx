@@ -1,41 +1,42 @@
 export default function SearchBar({ value, onChange }) {
   return (
     <form
-      className="flex max-w-2xl items-center gap-3 rounded-full border border-black/5 bg-white py-2 pl-5 pr-2 shadow-sm transition-shadow duration-200 focus-within:shadow-md focus-within:ring-2 focus-within:ring-crimson/30"
+      className="flex w-full items-center gap-3 rounded-xl border border-[#e3e8ef] bg-[#f8fafc] px-5 py-4 transition-all duration-200 focus-within:border-[#cbd5e1] focus-within:bg-white focus-within:shadow-[0_1px_3px_rgba(21,20,26,0.08)]"
       onSubmit={(e) => e.preventDefault()}
     >
-      <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-crimson/10 text-base text-crimson" aria-hidden="true">
-        🔍
-      </span>
+      <svg
+        className="h-5 w-5 flex-shrink-0 text-[#94a3b8]"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx="11" cy="11" r="7" />
+        <line x1="16.5" y1="16.5" x2="21" y2="21" />
+      </svg>
 
       <input
         type="text"
-        className="flex-1 border-none bg-transparent py-2 font-body text-lg font-medium text-ink outline-none placeholder:font-normal placeholder:text-ink-soft"
-        placeholder="Search for a show — try “Boys” or “Breaking Bad”"
+        className="flex-1 border-none bg-transparent font-body text-base text-ink outline-none placeholder:text-[#94a3b8]"
+        placeholder="Search for a movie..."
         value={value}
         onChange={(e) => onChange(e.target.value)}
         aria-label="Search for a show by title"
       />
 
-
       {value && (
         <button
           type="button"
-          className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border-none bg-ink-soft/10 text-sm text-muted transition-colors hover:bg-ink-soft/20 hover:text-ink"
+          className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border-none bg-transparent text-sm text-[#94a3b8] transition-colors hover:text-ink"
           onClick={() => onChange('')}
           aria-label="Clear search"
         >
           ✕
         </button>
       )}
-
-      <button
-        type="submit"
-        className="flex-shrink-0 rounded-full bg-crimson px-6 py-2.5 text-sm font-semibold text-parchment shadow-sm transition-colors hover:bg-crimson-dark"
-      >
-        Search
-      </button>
-      
     </form>
   )
 }

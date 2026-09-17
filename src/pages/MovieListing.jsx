@@ -10,13 +10,11 @@ const SEARCH_URL = (q) => `https://api.tvmaze.com/search/shows?q=${encodeURIComp
 export default function MovieListing() {
   const [query, setQuery] = useState('')
   const [allShows, setAllShows] = useState([])
-  const [searchResults, setSearchResults] = useState(null) 
-  const [status, setStatus] = useState('loading') 
+  const [searchResults, setSearchResults] = useState(null) // null = not searching
+  const [status, setStatus] = useState('loading') // loading | ready | error
   const [selectedShow, setSelectedShow] = useState(null)
 
-  
-
-  
+  // Load the default browsing grid once.
   useEffect(() => {
     let cancelled = false
     setStatus('loading')
@@ -27,10 +25,7 @@ export default function MovieListing() {
       })
       .then((data) => {
         if (cancelled) return
-        
-
-
-
+        // Sort by rating (highest first) so the default grid leads with the good stuff.
         const sorted = [...data].sort(
           (a, b) => (b.rating?.average || 0) - (a.rating?.average || 0)
         )
@@ -45,9 +40,7 @@ export default function MovieListing() {
     }
   }, [])
 
-  
-
-
+  // Debounced search-as-you-type against the search endpoint.
   useEffect(() => {
     const trimmed = query.trim()
     if (!trimmed) {
@@ -76,7 +69,7 @@ export default function MovieListing() {
           <h1 className="mb-1 font-display text-3xl md:text-4xl">Browse shows</h1>
           <div className="h-1 w-14 rounded-full bg-crimson" />
         </div>
-        <div className="md:ml-auto md:w-full md:max-w-md">
+        <div className="w-full md:ml-auto md:max-w-xl">
           <SearchBar value={query} onChange={setQuery} />
         </div>
       </div>

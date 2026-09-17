@@ -5,6 +5,7 @@ const SHOWS_URL = 'https://api.tvmaze.com/shows?page=0'
 
 export default function HeroBanner() {
   const [posters, setPosters] = useState([])
+  const [featured, setFeatured] = useState(null)
 
   useEffect(() => {
     let cancelled = false
@@ -15,12 +16,24 @@ export default function HeroBanner() {
       })
       .then((data) => {
         if (cancelled) return
-        const picks = data
+        const ranked = data
           .filter((show) => show.image?.medium && show.rating?.average)
           .sort((a, b) => b.rating.average - a.rating.average)
-          .slice(0, 24)
-          .map((show) => ({ id: show.id, src: show.image.medium, name: show.name }))
+        const picks = ranked.slice(0, 24).map((show) => ({
+          id: show.id,
+          src: show.image.medium,
+          name: show.name,
+        }))
         setPosters(picks)
+        // Pick a striking backdrop for the hero background — prefer the
+        // largest image available so it doesn't look pixelated when stretched.
+        const withBig = ranked.find((show) => show.image?.original) || ranked[0]
+        if (withBig) {
+          setFeatured({
+            src: withBig.image.original || withBig.image.medium,
+            name: withBig.name,
+          })
+        }
       })
       .catch(() => {
         // Silent fallback: hero still looks fine with no posters.
@@ -35,13 +48,15 @@ export default function HeroBanner() {
 
   return (
     <section className="relative isolate grid min-h-[70vh] grid-cols-1 items-center gap-8 overflow-hidden bg-ink px-6 py-12 text-parchment md:grid-cols-[1.2fr_0.8fr] md:px-16 md:py-20">
-      {/* Blurred poster collage behind everything */}
-      {posters.length > 0 && (
-        <div className="hero-collage" aria-hidden="true">
-          {posters.map((poster) => (
-            <img key={`bg-${poster.id}`} src={poster.src} alt="" loading="lazy" />
-          ))}
-        </div>
+      {/* Full-bleed featured backdrop */}
+      {featured && (
+        <img
+          className="hero-backdrop"
+          src={featured.src}
+          alt=""
+          aria-hidden="true"
+          loading="eager"
+        />
       )}
       <div className="hero-veil" aria-hidden="true" />
 
