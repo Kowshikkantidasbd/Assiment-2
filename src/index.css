@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-parchment text-ink font-body antialiased;
+  }
+
+  :focus-visible {
+    @apply outline outline-2 outline-crimson outline-offset-2;
+  }
+}
