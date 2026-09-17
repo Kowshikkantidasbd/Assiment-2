@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react'
-import MovieHero from '../components/MovieHero.jsx'
 import SearchBar from '../components/SearchBar.jsx'
 import MovieGrid from '../components/MovieGrid.jsx'
 import MovieResultsTable from '../components/MovieResultsTable.jsx'
@@ -15,6 +14,7 @@ export default function MovieListing() {
   const [status, setStatus] = useState('loading') // loading | ready | error
   const [selectedShow, setSelectedShow] = useState(null)
 
+  // Load the default browsing grid once.
   useEffect(() => {
     let cancelled = false
     setStatus('loading')
@@ -25,6 +25,7 @@ export default function MovieListing() {
       })
       .then((data) => {
         if (cancelled) return
+        // Sort by rating (highest first) so the default grid leads with the good stuff.
         const sorted = [...data].sort(
           (a, b) => (b.rating?.average || 0) - (a.rating?.average || 0)
         )
@@ -39,6 +40,7 @@ export default function MovieListing() {
     }
   }, [])
 
+  // Debounced search-as-you-type against the search endpoint.
   useEffect(() => {
     const trimmed = query.trim()
     if (!trimmed) {
@@ -61,40 +63,37 @@ export default function MovieListing() {
   }, [searchResults, allShows])
 
   return (
-    <div>
-      <MovieHero />
-      <div className="mx-auto max-w-7xl px-6 py-10 md:px-16 md:py-12">
-        <div className="mb-10 flex flex-col gap-6 md:mb-12 md:flex-row md:items-end md:justify-between">
-          <div>
-            <h2 className="mb-1 font-display text-3xl md:text-4xl">Browse the catalog</h2>
-            <div className="h-1 w-14 rounded-full bg-crimson" />
-          </div>
-          <div className="w-full md:ml-auto md:max-w-xl">
-            <SearchBar value={query} onChange={setQuery} />
-          </div>
+    <div className="mx-auto max-w-7xl px-6 py-10 md:px-16 md:py-12">
+      <div className="mb-10 flex flex-col gap-6 md:mb-12 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h1 className="mb-1 font-display text-3xl md:text-4xl">Browse shows</h1>
+          <div className="h-1 w-14 rounded-full bg-crimson" />
         </div>
-
-        {status === 'loading' && searchResults === null && (
-          <p className="text-base text-muted">Loading shows…</p>
-        )}
-        {status === 'error' && searchResults === null && (
-          <p className="text-base text-crimson">
-            Something went wrong loading shows. Please refresh and try again.
-          </p>
-        )}
-
-        {(status === 'ready' || searchResults !== null) && (
-          searchResults !== null ? (
-            <MovieResultsTable shows={visibleShows.slice(0, 60)} onSelect={setSelectedShow} />
-          ) : (
-            <MovieGrid shows={visibleShows.slice(0, 60)} onSelect={setSelectedShow} />
-          )
-        )}
-
-        {selectedShow && (
-          <MovieModal show={selectedShow} onClose={() => setSelectedShow(null)} />
-        )}
+        <div className="w-full md:ml-auto md:max-w-xl">
+          <SearchBar value={query} onChange={setQuery} />
+        </div>
       </div>
+
+      {status === 'loading' && searchResults === null && (
+        <p className="text-base text-muted">Loading shows…</p>
+      )}
+      {status === 'error' && searchResults === null && (
+        <p className="text-base text-crimson">
+          Something went wrong loading shows. Please refresh and try again.
+        </p>
+      )}
+
+      {(status === 'ready' || searchResults !== null) && (
+        searchResults !== null ? (
+          <MovieResultsTable shows={visibleShows.slice(0, 60)} onSelect={setSelectedShow} />
+        ) : (
+          <MovieGrid shows={visibleShows.slice(0, 60)} onSelect={setSelectedShow} />
+        )
+      )}
+
+      {selectedShow && (
+        <MovieModal show={selectedShow} onClose={() => setSelectedShow(null)} />
+      )}
     </div>
   )
 }
