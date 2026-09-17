@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import SearchBar from '../components/SearchBar.jsx'
 import MovieGrid from '../components/MovieGrid.jsx'
+<<<<<<< HEAD
 import MovieResultsTable from '../components/MovieResultsTable.jsx'
+=======
+>>>>>>> 533d2b33f5d12562041912882b20777c548f23b0
 import MovieModal from '../components/MovieModal.jsx'
 
 const ALL_SHOWS_URL = 'https://api.tvmaze.com/shows'
@@ -63,6 +66,7 @@ export default function MovieListing() {
   }, [searchResults, allShows])
 
   return (
+<<<<<<< HEAD
     <div className="mx-auto max-w-7xl px-6 py-10 md:px-16 md:py-12">
       <div className="mb-10 flex flex-col gap-6 md:mb-12 md:flex-row md:items-end md:justify-between">
         <div>
@@ -79,16 +83,33 @@ export default function MovieListing() {
       )}
       {status === 'error' && searchResults === null && (
         <p className="text-base text-crimson">
+=======
+    <div className="listing-page">
+      <div className="listing-page__header">
+        <h1>Browse shows</h1>
+        <SearchBar value={query} onChange={setQuery} />
+      </div>
+
+      {status === 'loading' && searchResults === null && (
+        <p className="status-text">Loading shows…</p>
+      )}
+      {status === 'error' && searchResults === null && (
+        <p className="status-text status-text--error">
+>>>>>>> 533d2b33f5d12562041912882b20777c548f23b0
           Something went wrong loading shows. Please refresh and try again.
         </p>
       )}
 
       {(status === 'ready' || searchResults !== null) && (
+<<<<<<< HEAD
         searchResults !== null ? (
           <MovieResultsTable shows={visibleShows.slice(0, 60)} onSelect={setSelectedShow} />
         ) : (
           <MovieGrid shows={visibleShows.slice(0, 60)} onSelect={setSelectedShow} />
         )
+=======
+        <MovieGrid shows={visibleShows.slice(0, 60)} onSelect={setSelectedShow} />
+>>>>>>> 533d2b33f5d12562041912882b20777c548f23b0
       )}
 
       {selectedShow && (

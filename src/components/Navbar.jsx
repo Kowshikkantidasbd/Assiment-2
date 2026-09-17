@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router-dom'
 
 export default function Navbar() {
   return (
+<<<<<<< HEAD
     <header className="sticky top-0 z-20 flex items-center justify-between bg-ink px-5 py-4 md:px-8 md:py-5">
       <Link to="/" className="flex items-center gap-2 font-display text-xl font-semibold text-parchment no-underline">
         <span className="text-2xl">🎬</span>
@@ -21,6 +22,18 @@ export default function Navbar() {
           to="/movies"
           className="bg-crimson px-3.5 py-2 text-sm font-semibold text-parchment no-underline transition-colors hover:bg-crimson-dark md:px-5"
         >
+=======
+    <header className="navbar">
+      <Link to="/" className="navbar__brand">
+        <span className="navbar__mark">🎬</span>
+        <span>MovieExplorer</span>
+      </Link>
+      <nav className="navbar__links">
+        <NavLink to="/" className="navbar__link" end>
+          Home
+        </NavLink>
+        <NavLink to="/movies" className="navbar__cta">
+>>>>>>> 533d2b33f5d12562041912882b20777c548f23b0
           Browse shows
         </NavLink>
       </nav>

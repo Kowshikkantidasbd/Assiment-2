@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🎬 MovieExplorer
 
 A responsive TV show explorer built with React and Vite. Browse shows, search
@@ -82,3 +83,6 @@ Pages:
 - No API key or `.env` file is required — TVmaze's API is public and
   unauthenticated.
 - Ratings that TVmaze hasn't collected yet display as `N/A` rather than `0`.
+=======
+
+>>>>>>> 533d2b33f5d12562041912882b20777c548f23b0
