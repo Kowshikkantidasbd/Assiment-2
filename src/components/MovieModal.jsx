@@ -14,6 +14,9 @@ const FALLBACK_POSTER =
     </svg>`
   )
 
+
+
+
 export default function MovieModal({ show, onClose }) {
   useEffect(() => {
     function onKeyDown(e) {
@@ -27,6 +30,8 @@ export default function MovieModal({ show, onClose }) {
     }
   }, [onClose])
 
+
+
   if (!show) return null
 
   const poster = show.image?.original || show.image?.medium || FALLBACK_POSTER
@@ -35,12 +40,14 @@ export default function MovieModal({ show, onClose }) {
   const genres = show.genres?.length ? show.genres.join(', ') : 'Unlisted'
   const network = show.network?.name || show.webChannel?.name || 'Unknown network'
 
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-ink/70 p-4 backdrop-blur-sm md:p-6"
       onClick={onClose}
     >
       <div
+
         className="relative flex max-h-[88vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-parchment shadow-2xl sm:flex-row"
         role="dialog"
         aria-modal="true"
@@ -60,11 +67,16 @@ export default function MovieModal({ show, onClose }) {
             className="h-full w-full object-cover"
             src={poster}
             alt={`Poster for ${show.name}`}
+
+
           />
           <span className="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-ink/80 px-3 py-1 text-sm font-semibold text-gold shadow-sm backdrop-blur-sm">
             ⭐ {rating}
           </span>
         </div>
+
+
+
 
         <div className="flex-1 overflow-y-auto p-6 md:p-7">
           <h2 id="modal-title" className="m-0 mb-2 font-display text-2xl leading-tight text-ink md:text-3xl">
@@ -74,6 +86,8 @@ export default function MovieModal({ show, onClose }) {
             <span>📅 {year}</span>
             <span className="text-muted">•</span>
             <span>📺 {network}</span>
+
+
           </p>
           <p className="m-0 mb-5 text-sm text-muted">Genres: {genres}</p>
 
@@ -83,4 +97,6 @@ export default function MovieModal({ show, onClose }) {
       </div>
     </div>
   )
+
+  
 }

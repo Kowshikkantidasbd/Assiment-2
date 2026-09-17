@@ -7,6 +7,7 @@ export default function SearchBar({ value, onChange }) {
       <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-crimson/10 text-base text-crimson" aria-hidden="true">
         🔍
       </span>
+
       <input
         type="text"
         className="flex-1 border-none bg-transparent py-2 font-body text-lg font-medium text-ink outline-none placeholder:font-normal placeholder:text-ink-soft"
@@ -15,6 +16,8 @@ export default function SearchBar({ value, onChange }) {
         onChange={(e) => onChange(e.target.value)}
         aria-label="Search for a show by title"
       />
+
+
       {value && (
         <button
           type="button"
@@ -25,12 +28,14 @@ export default function SearchBar({ value, onChange }) {
           ✕
         </button>
       )}
+
       <button
         type="submit"
         className="flex-shrink-0 rounded-full bg-crimson px-6 py-2.5 text-sm font-semibold text-parchment shadow-sm transition-colors hover:bg-crimson-dark"
       >
         Search
       </button>
+      
     </form>
   )
 }

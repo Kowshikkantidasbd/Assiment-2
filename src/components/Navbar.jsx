@@ -6,6 +6,8 @@ export default function Navbar() {
       <Link to="/" className="flex items-center gap-2 font-display text-xl font-semibold text-parchment no-underline">
         <span className="text-2xl">🎬</span>
         <span>MovieExplorer</span>
+
+
       </Link>
       <nav className="flex items-center gap-3 md:gap-6">
         <NavLink
@@ -14,6 +16,7 @@ export default function Navbar() {
           className={({ isActive }) =>
             `text-sm no-underline text-parchment ${isActive ? 'opacity-100' : 'opacity-80'} hover:opacity-100`
           }
+
         >
           Home
         </NavLink>
@@ -24,6 +27,8 @@ export default function Navbar() {
           Browse shows
         </NavLink>
       </nav>
+
+      
     </header>
   )
 }

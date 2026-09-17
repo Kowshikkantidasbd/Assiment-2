@@ -5,11 +5,15 @@ export default function MovieGrid({ shows, onSelect }) {
     return (
       <div className="py-16 text-center">
         <p className="mb-2 font-display text-xl">No shows found</p>
+
+
         <p className="m-0 text-muted">
           Try a different title, or check the spelling and search again.
         </p>
       </div>
     )
+
+
   }
 
   return (
@@ -19,4 +23,5 @@ export default function MovieGrid({ shows, onSelect }) {
       ))}
     </div>
   )
+  
 }

@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 
 export default function HeroBanner() {
+
+
+  
   return (
     <section className="grid min-h-[70vh] grid-cols-1 items-center gap-8 bg-ink px-6 py-12 text-parchment md:grid-cols-[1.2fr_0.8fr] md:px-16 md:py-20">
       <div>
@@ -20,6 +23,8 @@ export default function HeroBanner() {
         >
           Explore now
         </Link>
+
+
       </div>
 
       <div className="hidden items-stretch justify-center gap-2 md:flex" aria-hidden="true">
@@ -28,15 +33,20 @@ export default function HeroBanner() {
             <span key={i} className="h-3.5 w-3.5 rounded-sm bg-parchment opacity-15" />
           ))}
         </div>
+
         <div className="flex max-w-[260px] flex-1 items-center justify-center bg-gradient-to-br from-crimson to-crimson-dark">
           <span className="text-7xl">🎞️</span>
         </div>
+
         <div className="flex flex-col justify-around py-4">
           {Array.from({ length: 10 }).map((_, i) => (
             <span key={i} className="h-3.5 w-3.5 rounded-sm bg-parchment opacity-15" />
           ))}
         </div>
+
+
       </div>
+      
     </section>
   )
 }

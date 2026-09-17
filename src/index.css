@@ -61,7 +61,9 @@ main {
   flex: 1;
 }
 
-/* ---------- Navbar ---------- */
+
+
+
 .navbar {
   display: flex;
   align-items: center;
@@ -121,7 +123,9 @@ main {
   background: var(--crimson-dark);
 }
 
-/* ---------- Hero ---------- */
+
+
+
 .hero {
   background: var(--ink);
   color: var(--parchment);
@@ -209,7 +213,9 @@ main {
   font-size: 4.5rem;
 }
 
-/* ---------- Highlights (home page) ---------- */
+
+
+
 .highlights {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -239,7 +245,11 @@ main {
   font-size: 0.95rem;
 }
 
-/* ---------- Footer ---------- */
+
+
+
+
+
 .footer {
   background: var(--ink);
   color: var(--parchment-dim);
@@ -285,7 +295,9 @@ main {
   opacity: 1;
 }
 
-/* ---------- Listing page ---------- */
+
+
+
 .listing-page {
   padding: 3rem 4rem 5rem;
   max-width: 1400px;
@@ -341,7 +353,11 @@ main {
   color: var(--crimson);
 }
 
-/* ---------- Movie grid & cards ---------- */
+
+
+
+
+
 .movie-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -437,7 +453,10 @@ main {
   margin: 0;
 }
 
-/* ---------- Modal ---------- */
+
+
+
+
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -537,7 +556,9 @@ main {
   background: var(--crimson);
 }
 
-/* ---------- Responsive ---------- */
+
+
+
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;

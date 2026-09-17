@@ -16,6 +16,8 @@ export default function MovieResultsTable({ shows, onSelect }) {
           Try a different title, or check the spelling and search again.
         </p>
       </div>
+
+
     )
   }
 
@@ -24,32 +26,44 @@ export default function MovieResultsTable({ shows, onSelect }) {
       <div className="overflow-x-auto">
         <table className="w-full border-collapse text-left">
           <thead>
+
             <tr className="border-b border-black/5 bg-parchment-dim/60">
               <th className="w-16 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-muted" />
               <th className="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-muted">
                 Title
               </th>
+
               <th className="hidden px-4 py-3 text-xs font-semibold uppercase tracking-wide text-muted sm:table-cell">
                 Genres
               </th>
+
               <th className="hidden px-4 py-3 text-xs font-semibold uppercase tracking-wide text-muted md:table-cell">
                 Premiered
               </th>
+
+
               <th className="hidden px-4 py-3 text-xs font-semibold uppercase tracking-wide text-muted md:table-cell">
                 Status
               </th>
+
+
               <th className="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-muted">
                 Rating
               </th>
+
+
               <th className="px-4 py-3" />
             </tr>
           </thead>
+
           <tbody>
             {shows.map((show) => {
               const year = show.premiered ? show.premiered.slice(0, 4) : '—'
               const rating = show.rating?.average ? show.rating.average.toFixed(1) : 'N/A'
               const poster = show.image?.medium || show.image?.original || FALLBACK_POSTER
               const genres = show.genres?.length ? show.genres.join(', ') : '—'
+
+
 
               return (
                 <tr
@@ -59,11 +73,14 @@ export default function MovieResultsTable({ shows, onSelect }) {
                 >
                   <td className="px-4 py-2.5">
                     <img
+
                       src={poster}
                       alt={`Poster for ${show.name}`}
                       loading="lazy"
                       className="h-14 w-10 rounded-md object-cover shadow-sm"
                     />
+
+
                   </td>
                   <td className="px-4 py-2.5">
                     <span className="font-display text-base font-semibold text-ink">{show.name}</span>
@@ -72,11 +89,15 @@ export default function MovieResultsTable({ shows, onSelect }) {
                   <td className="hidden px-4 py-2.5 text-sm text-muted md:table-cell">{year}</td>
                   <td className="hidden px-4 py-2.5 text-sm text-muted md:table-cell">
                     {show.status || '—'}
+
+
                   </td>
                   <td className="px-4 py-2.5">
                     <span className="inline-flex items-center gap-1 rounded-full bg-ink/5 px-2.5 py-1 text-xs font-semibold text-ink">
                       ⭐ {rating}
                     </span>
+
+
                   </td>
                   <td className="px-4 py-2.5 text-right">
                     <button
@@ -84,6 +105,8 @@ export default function MovieResultsTable({ shows, onSelect }) {
                         e.stopPropagation()
                         onSelect(show)
                       }}
+
+
                       className="rounded-full bg-ink px-4 py-1.5 text-xs font-semibold text-parchment shadow-sm transition-colors hover:bg-crimson"
                     >
                       Details
@@ -93,6 +116,7 @@ export default function MovieResultsTable({ shows, onSelect }) {
               )
             })}
           </tbody>
+          
         </table>
       </div>
     </div>
