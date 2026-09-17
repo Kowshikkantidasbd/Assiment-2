@@ -5,7 +5,6 @@ function stripHtml(html) {
   return html.replace(/<[^>]+>/g, '')
 }
 
-<<<<<<< HEAD
 const FALLBACK_POSTER =
   'data:image/svg+xml;utf8,' +
   encodeURIComponent(
@@ -15,8 +14,6 @@ const FALLBACK_POSTER =
     </svg>`
   )
 
-=======
->>>>>>> 533d2b33f5d12562041912882b20777c548f23b0
 export default function MovieModal({ show, onClose }) {
   useEffect(() => {
     function onKeyDown(e) {
@@ -32,35 +29,24 @@ export default function MovieModal({ show, onClose }) {
 
   if (!show) return null
 
-<<<<<<< HEAD
   const poster = show.image?.original || show.image?.medium || FALLBACK_POSTER
-=======
-  const backdrop = show.image?.original || show.image?.medium
->>>>>>> 533d2b33f5d12562041912882b20777c548f23b0
   const rating = show.rating?.average ? show.rating.average.toFixed(1) : 'N/A'
   const year = show.premiered ? show.premiered.slice(0, 4) : '—'
   const genres = show.genres?.length ? show.genres.join(', ') : 'Unlisted'
   const network = show.network?.name || show.webChannel?.name || 'Unknown network'
 
   return (
-<<<<<<< HEAD
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-ink/70 p-4 backdrop-blur-sm md:p-6"
       onClick={onClose}
     >
       <div
         className="relative flex max-h-[88vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-parchment shadow-2xl sm:flex-row"
-=======
-    <div className="modal-backdrop" onClick={onClose}>
-      <div
-        className="modal"
->>>>>>> 533d2b33f5d12562041912882b20777c548f23b0
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
         onClick={(e) => e.stopPropagation()}
       >
-<<<<<<< HEAD
         <button
           className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-ink shadow-md backdrop-blur transition-colors hover:bg-crimson hover:text-parchment"
           onClick={onClose}
@@ -93,39 +79,6 @@ export default function MovieModal({ show, onClose }) {
 
           <h3 className="m-0 mb-2 font-display text-lg text-ink">Overview</h3>
           <p className="leading-relaxed text-ink-soft">{stripHtml(show.summary)}</p>
-=======
-        <button className="modal__close" onClick={onClose} aria-label="Close details">
-          ✕
-        </button>
-
-        {backdrop && (
-          <div className="modal__backdrop-wrap">
-            <img className="modal__backdrop" src={backdrop} alt={`Backdrop for ${show.name}`} />
-          </div>
-        )}
-
-        <div className="modal__body">
-          <h2 id="modal-title" className="modal__title">
-            {show.name}
-          </h2>
-          <p className="modal__meta">
-            <span>⭐ Rating: {rating}</span>
-            <span className="movie-card__dot">•</span>
-            <span>📅 Release: {year}</span>
-            <span className="movie-card__dot">•</span>
-            <span>📺 {network}</span>
-          </p>
-          <p className="modal__genres">Genres: {genres}</p>
-
-          <h3 className="modal__section-title">Overview</h3>
-          <p className="modal__summary">{stripHtml(show.summary)}</p>
-
-          <div className="modal__actions">
-            <button className="modal__close-btn" onClick={onClose}>
-              ❌ Close
-            </button>
-          </div>
->>>>>>> 533d2b33f5d12562041912882b20777c548f23b0
         </div>
       </div>
     </div>

@@ -13,22 +13,14 @@ export default function MovieCard({ show, onSelect }) {
   const poster = show.image?.medium || show.image?.original || FALLBACK_POSTER
 
   return (
-<<<<<<< HEAD
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-black/5 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-ink/20">
       <div className="relative aspect-[2/3] overflow-hidden bg-ink-soft">
         <img
           className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-=======
-    <article className="movie-card">
-      <div className="movie-card__poster-wrap">
-        <img
-          className="movie-card__poster"
->>>>>>> 533d2b33f5d12562041912882b20777c548f23b0
           src={poster}
           alt={`Poster for ${show.name}`}
           loading="lazy"
         />
-<<<<<<< HEAD
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/0 to-ink/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         <span className="absolute right-2.5 top-2.5 flex items-center gap-1 rounded-full bg-ink/80 px-2.5 py-1 text-xs font-semibold text-gold shadow-sm backdrop-blur-sm">
           ⭐ {rating}
@@ -49,18 +41,6 @@ export default function MovieCard({ show, onSelect }) {
           <span className="transition-transform duration-200 group-hover/btn:translate-x-0.5" aria-hidden="true">
             →
           </span>
-=======
-      </div>
-      <div className="movie-card__body">
-        <h3 className="movie-card__title">{show.name}</h3>
-        <p className="movie-card__meta">
-          <span className="movie-card__rating">⭐ {rating}</span>
-          <span className="movie-card__dot">•</span>
-          <span>📅 {year}</span>
-        </p>
-        <button className="movie-card__btn" onClick={() => onSelect(show)}>
-          See details
->>>>>>> 533d2b33f5d12562041912882b20777c548f23b0
         </button>
       </div>
     </article>
