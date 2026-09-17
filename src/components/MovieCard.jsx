@@ -7,6 +7,8 @@ const FALLBACK_POSTER =
     </svg>`
   )
 
+
+
 function StarIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="currentColor" className="h-3 w-3" aria-hidden="true">
@@ -14,6 +16,8 @@ function StarIcon() {
     </svg>
   )
 }
+
+
 
 export default function MovieCard({ show, onSelect }) {
   const year = show.premiered ? show.premiered.slice(0, 4) : null
@@ -26,6 +30,8 @@ export default function MovieCard({ show, onSelect }) {
         onClick={() => onSelect(show)}
         className="relative block aspect-[2/3] w-full overflow-hidden border-none bg-ink-soft p-0 text-left"
       >
+
+
         <img
           className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
           src={poster}
@@ -39,6 +45,8 @@ export default function MovieCard({ show, onSelect }) {
           </span>
         )}
       </button>
+
+
       <div className="flex flex-1 flex-col gap-1 border-t border-black/8 p-3.5">
         <h3 className="m-0 truncate font-display text-base font-semibold leading-tight text-ink" title={show.name}>
           {show.name}
@@ -50,7 +58,9 @@ export default function MovieCard({ show, onSelect }) {
         >
           See details
         </button>
+        
       </div>
+
     </article>
   )
 }

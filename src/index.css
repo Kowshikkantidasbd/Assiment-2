@@ -61,7 +61,7 @@ main {
   flex: 1;
 }
 
-/* ---------- Navbar ---------- */
+
 .navbar {
   display: flex;
   align-items: center;
@@ -121,7 +121,9 @@ main {
   background: var(--crimson-dark);
 }
 
-/* ---------- Hero ---------- */
+
+
+
 .hero {
   background: var(--ink);
   color: var(--parchment);
@@ -180,6 +182,8 @@ main {
   height: 100%;
 }
 
+
+
 .filmstrip {
   display: flex;
   flex-direction: column;
@@ -209,7 +213,9 @@ main {
   font-size: 4.5rem;
 }
 
-/* ---------- Highlights (home page) ---------- */
+
+
+
 .highlights {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -233,13 +239,17 @@ main {
   margin: 0.6rem 0 0.5rem;
 }
 
+
+
 .highlight p {
   color: var(--ink-soft);
   margin: 0;
   font-size: 0.95rem;
 }
 
-/* ---------- Footer ---------- */
+
+
+
 .footer {
   background: var(--ink);
   color: var(--parchment-dim);
@@ -285,7 +295,9 @@ main {
   opacity: 1;
 }
 
-/* ---------- Listing page ---------- */
+
+
+
 .listing-page {
   padding: 3rem 4rem 5rem;
   max-width: 1400px;
@@ -341,7 +353,8 @@ main {
   color: var(--crimson);
 }
 
-/* ---------- Movie grid & cards ---------- */
+
+
 .movie-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -356,6 +369,7 @@ main {
   overflow: hidden;
   transition: box-shadow 0.15s ease;
 }
+
 
 .movie-card:hover {
   box-shadow: 0 8px 24px rgba(21, 20, 26, 0.12);
@@ -437,7 +451,7 @@ main {
   margin: 0;
 }
 
-/* ---------- Modal ---------- */
+
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -537,7 +551,7 @@ main {
   background: var(--crimson);
 }
 
-/* ---------- Responsive ---------- */
+
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
@@ -579,7 +593,7 @@ main {
   }
 }
 
-/* ---------- Hero featured backdrop ---------- */
+
 .hero-backdrop {
   position: absolute;
   inset: 0;
@@ -591,7 +605,9 @@ main {
   pointer-events: none;
 }
 
-/* Dark wash so the headline stays readable over the backdrop */
+
+
+
 .hero-veil {
   position: absolute;
   inset: 0;
@@ -608,7 +624,9 @@ main {
   }
 }
 
-/* ---------- Hero scrolling poster strip ---------- */
+
+
+
 .hero-strip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -663,7 +681,9 @@ main {
   }
 }
 
-/* ---------- Navbar link underline ---------- */
+
+
+
 .nav-link::after {
   content: '';
   position: absolute;
